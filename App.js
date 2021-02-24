@@ -1,15 +1,15 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+
+import UserContextProvider from './src/contexts/UserContext';
+import MainStack from './src/stacks/MainStack';
 
 export default () => {
   return (
-    <Text>Página inicial</Text>
+    <UserContextProvider>
+      <NavigationContainer>
+        <MainStack />
+      </NavigationContainer>
+    </UserContextProvider>
   );
 }
