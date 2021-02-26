@@ -119,7 +119,7 @@ export const ServiceChooseBtnText = styled.Text`
 `;
 
 export const TestimonialArea = styled.View`
-  margin-top: 30px;
+  margin-top: 10px;
   margin-bottom: 30px;
 `;
 export const TestimonialItem = styled.View`
@@ -156,3 +156,4 @@ export const BackButton = styled.TouchableOpacity`
 export const LoadingIcon = styled.ActivityIndicator`
   margin-top: 50px;
 `;
+
