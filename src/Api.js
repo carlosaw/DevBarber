@@ -93,15 +93,14 @@ export default {
     selectedHour) => {  
     const token = await AsyncStorage.getItem('token');
 
-    const req = await fetch(`${BASE_API}/user/appointment`, {
+    const req = await fetch(`${BASE_API}/barber/${userId}/appointment`, {
       method: 'POST',
       headers:{
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        token,
-        id: userId,    
+        token,    
         service,
         year: selectedYear,
         month: selectedMonth,
@@ -111,5 +110,46 @@ export default {
     });
     const json = await req.json();
     return json;
-  }
+  },
+  search: async (barberName) => {
+    const token = await AsyncStorage.getItem('token');
+    const req = await fetch(`${BASE_API}/search?q=${barberName}&token=${token}`);
+    const json = await req.json();
+    return json;
+  },
+  getFavorites: async () => {
+    const token = await AsyncStorage.getItem('token');
+    const req = await fetch(`${BASE_API}/user/favorites?token=${token}`);
+    const json = await req.json();
+    return json;
+  },
+  getAppointments: async () => {
+    const token = await AsyncStorage.getItem('token');
+    const req = await fetch(`${BASE_API}/user/appointments?token=${token}`);
+    const json = await req.json();
+    return json;
+  },
+  updateUser: async (body) => {  
+    const token = await AsyncStorage.getItem('token');
+    body.token = token;
+
+    const req = await fetch(`${BASE_API}/barber/${userId}/user`, {
+      method: 'PUT',
+      headers:{
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+    const json = await req.json();
+    return json;
+  },
 };
+/*
+Api.updateUser({
+  name: 'Novo Nome',
+  email: 'E-mail novo@adasdasd.com',
+  password: '123',
+  password_confirm: '123'
+});
+*/

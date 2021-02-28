@@ -86,7 +86,7 @@ export default () => {
 
   const handleFavClick = () => {
     setFavorited( !favorited );// Inverte o favorito
-    Api.setFavorite( userInfo.id );// Muda nobanco da api.
+    Api.setFavorite( userInfo.id );// Muda no banco da api.
   }
 
   const handleServiceChoose = (key) => {

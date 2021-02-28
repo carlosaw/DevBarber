@@ -246,6 +246,7 @@ export default ({ show, setShow, user, service }) => {
     setShow(false);
   }
 
+  // Finalizar agendamento
   const handleFinishClick = async () => {
     if(
         user.id &&
@@ -255,11 +256,13 @@ export default ({ show, setShow, user, service }) => {
         selectedDay > 0 &&
         selectedHour != null
     ) {
-        /*let res = await Api.setAppointment(
+      // alert("SERVICE: "+user.services[service].id);
+      // alert("MES: "+selectedMonth);
+        let res = await Api.setAppointment(
           user.id,
-          service,
+          user.services[service].id,
           selectedYear,
-          selectedMonth,
+          selectedMonth + 1,
           selectedDay,
           selectedHour
         );
@@ -268,9 +271,7 @@ export default ({ show, setShow, user, service }) => {
           navigation.navigate('Appointments');
         } else {
           alert(res.error);
-        }*/
-        setShow(false);
-        navigation.navigate('Appointments');
+        }
     } else {
       alert("Preencha todos os dados!");
     }
